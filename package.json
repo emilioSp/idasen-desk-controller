@@ -7,7 +7,7 @@
   "files": [
     "./connect.js",
     "./Desk.js",
-    "./idasen.js"
+    ".bin/idasen.js"
   ],
   "author": "",
   "license": "MIT",
