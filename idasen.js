@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 import { Command } from "commander";
-import { connect } from "../connect.js";
+import { connect } from "./connect.js";
 import { setTimeout } from "node:timers/promises";
-import { MIN_HEIGHT, MAX_HEIGHT } from "../Desk.js";
-import pkg from "../package.json" assert { type: "json" };
+import { MIN_HEIGHT, MAX_HEIGHT } from "./Desk.js";
+import pkg from "./package.json" assert { type: "json" };
 
 const program = new Command();
 
