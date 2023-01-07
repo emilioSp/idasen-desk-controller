@@ -1,5 +1,5 @@
-import { performance } from "node:perf_hooks";
-import { setTimeout } from "node:timers/promises";
+import { performance } from 'node:perf_hooks';
+import { setTimeout } from 'node:timers/promises';
 
 export const MAX_HEIGHT = 127;
 export const MIN_HEIGHT = 62;
@@ -13,27 +13,28 @@ export default class Desk {
   }
 
   async moveUp() {
-    await this.control.writeAsync(Buffer.from("4700", "hex"), false);
+    await this.control.writeAsync(Buffer.from('4700', 'hex'), false);
   }
 
   async moveDown() {
-    await this.control.writeAsync(Buffer.from("4600", "hex"), false);
+    await this.control.writeAsync(Buffer.from('4600', 'hex'), false);
   }
 
   async stopMoving() {
-    await this.control.writeAsync(Buffer.from("FF00", "hex"), false);
+    await this.control.writeAsync(Buffer.from('FF00', 'hex'), false);
   }
 
   async getCurrentHeightCm() {
     const heightInBytes = await this.position.readAsync();
     const relativeHeightCm = heightInBytes.readInt16LE() / 100;
-    const absoluteHeightCm = MIN_HEIGHT + relativeHeightCm;
-    return absoluteHeightCm;
+    return MIN_HEIGHT + relativeHeightCm;
   }
 
   async moveTo(targetCm) {
     const currentCm = await this.getCurrentHeightCm();
-    return currentCm > targetCm ? this._moveTo(targetCm, () => this.moveDown()) : this._moveTo(targetCm, () => this.moveUp());
+    return currentCm > targetCm
+      ? this._moveTo(targetCm, () => this.moveDown())
+      : this._moveTo(targetCm, () => this.moveUp());
   }
 
   async _moveTo(targetCm, moveFn) {
@@ -45,8 +46,12 @@ export default class Desk {
 
     while (!targetReached(currentCm, targetCm)) {
       currentCm = await this.getCurrentHeightCm();
-      if (targetReached(currentCm, targetCm)) break;
-      if ((performance.now() - lastCommandNow) <= 300) continue;
+      if (targetReached(currentCm, targetCm)) {
+        break;
+      }
+      if (performance.now() - lastCommandNow <= 300) {
+        continue;
+      }
 
       await moveFn();
       lastCommandNow = performance.now();
