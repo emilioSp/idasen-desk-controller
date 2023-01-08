@@ -4,7 +4,9 @@
   "description": "Idasen Ikea standing desk CLI",
   "main": "idasen.js",
   "type": "module",
-  "bin": "idasen.js",
+  "bin": {
+    "idasen": "idasen.js"
+  },
   "author": "",
   "license": "MIT",
   "scripts": {
