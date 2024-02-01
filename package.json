@@ -11,7 +11,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/emiliosp/idasen-desk-controller.git"
+    "url": "git+https://github.com/emiliosp/idasen-desk-controller.git"
   },
   "dependencies": {
     "@abandonware/noble": "^1.9.2-19",
