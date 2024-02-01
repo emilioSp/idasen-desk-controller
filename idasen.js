@@ -4,9 +4,17 @@ import { connect } from './connect.js';
 import { setTimeout } from 'node:timers/promises';
 import { MIN_HEIGHT, MAX_HEIGHT } from './Desk.js';
 import { readFileSync } from 'fs';
+
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 import { scan } from "./scan.js";
 
-const { version } = JSON.parse(readFileSync('./package.json', 'utf-8'));
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+
+console.log(__dirname);
+const { version } = JSON.parse(readFileSync(`${__dirname}/package.json`, 'utf-8'));
+console.log(version);
 
 const program = new Command();
 
@@ -38,7 +46,6 @@ program.command('height')
     process.exit();
   });
 
-// await desk.moveTo(75);
 program.command('move-to')
   .description('Move desk to target height in cm')
   .argument('<target-cm>', 'target height in cm')
