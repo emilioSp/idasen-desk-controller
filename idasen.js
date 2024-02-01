@@ -3,8 +3,10 @@ import { Command } from 'commander';
 import { connect } from './connect.js';
 import { setTimeout } from 'node:timers/promises';
 import { MIN_HEIGHT, MAX_HEIGHT } from './Desk.js';
-import pkg from "./package.json" assert { type: 'json' };
+import { readFileSync } from 'fs';
 import { scan } from "./scan.js";
+
+const { version } = JSON.parse(readFileSync('./package.json', 'utf-8'));
 
 const program = new Command();
 
@@ -13,7 +15,7 @@ const deskUuid = process.env.IDASEN_DESK_UUID;
 program
   .name('idasen')
   .description('CLI to control your Idasen Ikea standing desk')
-  .version(pkg.version);
+  .version(version);
 
 program.command('scan')
   .description('scan bluetooth devices. Use this command to search for your desk uuid')
