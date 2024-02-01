@@ -4,21 +4,14 @@ import { connect } from './connect.js';
 import { setTimeout } from 'node:timers/promises';
 import { MIN_HEIGHT, MAX_HEIGHT } from './Desk.js';
 import { readFileSync } from 'fs';
-
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { scan } from "./scan.js";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-
-console.log(__dirname);
-const { version } = JSON.parse(readFileSync(`${__dirname}/package.json`, 'utf-8'));
-console.log(version);
-
 const program = new Command();
 
-const deskUuid = process.env.IDASEN_DESK_UUID;
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const { version } = JSON.parse(readFileSync(`${__dirname}/package.json`, 'utf-8'));
 
 program
   .name('idasen')
@@ -30,6 +23,8 @@ program.command('scan')
   .action(() => {
     scan();
   });
+
+const deskUuid = process.env.IDASEN_DESK_UUID;
 
 program.command('height')
   .description('Return current height expressed in cm')
