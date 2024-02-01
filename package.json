@@ -9,9 +9,6 @@
   },
   "author": "",
   "license": "MIT",
-  "scripts": {
-    "test": "echo todo"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/emiliosp/idasen-desk-controller.git"
