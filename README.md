@@ -5,6 +5,8 @@ This package uses noble to communicate with Idasen bluetooth controller
 
 Check its [prerequisites](https://github.com/abandonware/noble#os-x)
 
+https://github.com/emilioSp/idasen-desk-controller/assets/22614105/fc9bf818-a8f9-4c1a-8b99-b5778c5e7ac2
+
 <a href="https://www.buymeacoffee.com/emiliosp" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 
 ## installation
